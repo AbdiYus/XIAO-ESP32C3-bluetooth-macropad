@@ -14,12 +14,9 @@ void functions::initKeyPad() {
     digitalWrite(col_2, LOW);
 }
 
-void functions::readInput() {
-    inputRow_1 = digitalRead(row_1);
-    inputRow_2 = digitalRead(row_2);
-}
-
 void functions::checkKeyPad(int col) {
+  unsigned long timeNow; // time now
+  unsigned long waitPeriod = 50; // wait period per press (in ms)
     digitalWrite(col, HIGH);
     functions::findKey();
 
@@ -30,6 +27,15 @@ void functions::checkKeyPad(int col) {
 }
 
 void functions::findKey() {
+    int inputRow_1 = 0; // row reading (first row)
+    int lastRowState_1 = 0; // last row reading (first row)
+
+    int inputRow_2 = 0; // row reading (secound row)
+    int lastRowState_2 = 0; // last row state (secound row)
+
+    inputRow_1 = digitalRead(row_1);
+    inputRow_2 = digitalRead(row_2);
+
     if(inputRow_1) {
         if(digitalRead(col_1) == HIGH)   keyStroke::copy();
         if(digitalRead(col_2) == HIGH)  keyStroke::paste();

@@ -1,7 +1,6 @@
 #ifndef KEYSTROKE_H
 #define KEYSTROKE_H
 
-#include <Arduino.h>
 #include <Keyboard.h>
 
 namespace keyStroke {
