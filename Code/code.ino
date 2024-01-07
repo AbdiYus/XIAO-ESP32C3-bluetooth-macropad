@@ -1,5 +1,4 @@
 #include "functions.h"
-#include "keystroke.h"
 
 void setup() {
     functions::initKeyPad();

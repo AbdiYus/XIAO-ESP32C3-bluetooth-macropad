@@ -31,16 +31,16 @@ void functions::checkKeyPad(int col) {
 
 void functions::findKey() {
     if(inputRow_1) {
-        if(digitalRead(col_1) == HIGH)   copy();
-        if(digitalRead(col_2) == HIGH)  paste();
+        if(digitalRead(col_1) == HIGH)   keyStroke::copy();
+        if(digitalRead(col_2) == HIGH)  keyStroke::paste();
 
         lastRowState_1 = inputRow_1;
         while(inputRow_1 == lastRowState_1) inputRow_1 = digitalRead(row_1);
     }
 
     if(inputRow_2) {
-        if(digitalRead(col_1) == HIGH)   screenShot();
-        if(digitalRead(col_2) == HIGH)  altTab();
+        if(digitalRead(col_1) == HIGH)  keyStroke::screenShot();
+        if(digitalRead(col_2) == HIGH)  keyStroke::altTab();
 
         lastRowState_2 = inputRow_2;
         while(inputRow_2 == lastRowState_2) inputRow_2 = digitalRead(row_2);
