@@ -1,1 +1,4 @@
-# The code
+# Structure of the keyboard/keypad Code
+The primary file of this project is **code.ino**, which contains the code for the Xiao ESP32C3 microcontroller. To enhance readability and manageability, the code is divided into multiple files.
+
+For adding new keystrokes, modifications can be conveniently made in the **'keystroke.h'** and corresponding **'.cpp'** files. Similarly, any changes or additions related to input and output pins are managed within the **'pins.h'** file. This organizational structure facilitates quick and efficient scaling of the matrix, ensuring the project remains adaptable and easy to modify.
