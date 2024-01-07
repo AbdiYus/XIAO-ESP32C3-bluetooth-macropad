@@ -1,12 +1,14 @@
 #include "functions.h"
 
+/**
+*   initKeypad() sets the pins for the keypad matrix, and
+*   the library Keyboard.
+*/
 void functions::initKeyPad() {
     pinMode(row_1, INPUT);
     pinMode(row_2, INPUT);
     pinMode(col_1, OUTPUT);
     pinMode(col_2, OUTPUT);
-
-    Serial.begin(9600);
     Keyboard.begin();
 
     // set everything to low
@@ -14,18 +16,24 @@ void functions::initKeyPad() {
     digitalWrite(col_2, LOW);
 }
 
+/**
+*   checkKeyPad() checks the keypad matrix for a key press.
+*/
 void functions::checkKeyPad(int col) {
   unsigned long timeNow; // time now
   unsigned long waitPeriod = 50; // wait period per press (in ms)
     digitalWrite(col, HIGH);
     functions::findKey();
 
-    if(millis() >= timeNow + waitPeriod) {
+    if(millis() >= timeNow + waitPeriod) { // wait period per press
         timeNow += waitPeriod;
         digitalWrite(col, LOW);
     }
 }
 
+/**
+*   findKey() finds the key pressed on the keypad matrix. (position) 
+*/
 void functions::findKey() {
     int inputRow_1 = 0; // row reading (first row)
     int lastRowState_1 = 0; // last row reading (first row)
