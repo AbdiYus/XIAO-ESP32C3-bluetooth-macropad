@@ -18,6 +18,8 @@ void functions::initKeyPad() {
 
 /**
 *   checkKeyPad() checks the keypad matrix for a key press.
+*
+*   @param int col - the column to check
 */
 void functions::checkKeyPad(int col) {
   unsigned long timeNow; // time now
