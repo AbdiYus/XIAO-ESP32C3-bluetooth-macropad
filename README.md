@@ -21,14 +21,17 @@ __N.B! currently work in progress!!__
 ## PCB design
 I'm new to PCB design and __highly recommend__ you to check it out before using the design. 
 
-### schematic 
+### Schematic 
 <img src="schematic.png" width="1000">
 
 __N.B!__ 
 The xiao esp32c3 symbol doesn't include the battery connectors. So, I've manualy connected them on the PCB editor
 
-### 3d model
+### pcb
 <img src="pcb.png" alt="drawing" width="400"/>
+
+### 3d model
+<img src="3d model.png" alt="drawing" width="400"/>
 
 # Bill of material (BOM)
 | component             | website | 
