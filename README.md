@@ -14,7 +14,7 @@ The project requires these libraries to compile:
 - [ESP32-BLE-Keyboard by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
 - [ESP32-BLE-Mouse by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
 
-After downloading these libraies, then you can easly change/add keystrokes in the __keystroke.h/cpp__. You can also add more columns in the matrix __code.ino__. 
+After downloading these libraies, then you can easly change/add keystrokes in the file __keystroke.h/cpp__. You can also add more columns/inputs in the file __code.ino__. 
 
 __N.B! currently work in progress!!__ 
 
