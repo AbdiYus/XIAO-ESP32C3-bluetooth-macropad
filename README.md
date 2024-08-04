@@ -28,7 +28,7 @@ __N.B!__
 The xiao esp32c3 symbol doesn't include the battery connectors. So, I've manualy connected them on the PCB editor
 
 ### pcb
-<img src="pcb.png" alt="drawing" width="400"/>
+<img src="pcb.png"  width="400"/>
 
 ### 3d model
 <img src="3d model.png" alt="drawing" width="400"/>
