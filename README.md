@@ -1,12 +1,43 @@
-# XIAO-ESP32C3 bluetooth keyboard/keypad
-Creating a simple circuit for detecting a single button press is straightforward. This involves setting a signal to transition from **high** to **low** using one output pin and an input pin to register if the button is pressed. For more detailed information, explore the Arduino documentation on button circuits: https://docs.arduino.cc/built-in-examples/digital/Button
+# XIAO-ESP32C3 bluetooth Macropad (C3_Pad) 
+A custom Macropad using a Xiao esp32c3 micorcontroller. 
 
-However, this method becomes impractical when expanding to a full keyboard or keypad, as it requires an excessive number of wires and digital pins. Instead of dedicating two pins per button, a more efficient approach is to use a matrix configuration. This design involves arranging several output pins vertically, directly connected to the ground, and input pins horizontally. The only connection between them is a combination of a switch and a diode.
+This projects includes: 
+- Arduino sketch
+- PCB design
+- Bill of material 
+- 3d print case 
 
-<p align="center">
-    <img src="https://pcbheaven.com/wikipages/images/howkeymatricesworks_1277655319.gif">
-</p>
+## Arduino sketch 
+The project requires these libraries to compile: 
+- [Encoder by Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
+- [ssd1306 by Alexey Dynda](https://github.com/lexus2k/ssd1306)
+- [ESP32-BLE-Keyboard by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
+- [ESP32-BLE-Mouse by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
 
-So when a button is pressed down it will be registred by the input pin on the same level. We can then differenciate which button was pressed by which output was on. So by cycling between mutliple outputs we can create a code that can registrate and then do a keystroke. You can read more in depth about the logic behid the matrix here: https://pcbheaven.com/wikipages/How_Key_Matrices_Works/
+After downloading these libraies, then you can easly change/add keystrokes in the __keystroke.h/cpp__. You can also add more columns in the matrix __code.ino__. 
 
-The library used to do the keystorkes are here: https://www.arduino.cc/reference/en/language/functions/usb/keyboard/
+__N.B! currently work in progress!!__ 
+
+## PCB design
+I'm new to PCB design and __highly recommend__ you to check it out before using the design. 
+
+### schematic 
+<img src="schematic.png" width="1000">
+
+__N.B!__ 
+The xiao esp32c3 symbol doesn't include the battery connectors. So, I've manualy connected them on the PCB editor
+
+### 3d model
+<img src="pcb.png" alt="drawing" width="400"/>
+
+# Bill of material (BOM)
+| component             | website | 
+| --------              | ------- |
+| SSD1306 OLED          | [link](https://www.amazon.com/HiLetgo-Adafruit-Beaglebones-Raspberry-Optional/dp/B06XRBYJR8?th=1)    |
+| KY-040 encoder        | [link](https://www.amazon.com/JTAREA-KY-040-Encoder-Encoders-Modules/dp/B0D2TW63G1/ref=sr_1_1_sspa?)   |
+| TP4056 charger        | [link](https://www.amazon.com/HiLetgo-Lithium-Charging-Protection-Functions/dp/B07PKND8KG/ref=sr_1_1_sspa?)    |
+| Cherry MX silent red  | [link](https://www.amazon.com/Cherry-MX-RGB-Mechanical-Keyboard/dp/B0CBS4QYXS/ref=sr_1_1?)    |
+| Xiao ESP32c3          | [link](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html)     |
+
+# 3d print case 
+__Not finished__ 
