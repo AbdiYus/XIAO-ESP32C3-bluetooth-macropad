@@ -12,12 +12,13 @@
 #include "pins.h"
 #include "keystroke.h"
 
+
 /*  Encoder  */
-#include <Mouse.h>
+#include <BleMouse.h>
 #include "Encoder.h"
 
 /*  Screen  */
-#include "screen.h"
+// #include "screen.h"
 
 extern Encoder en;
 extern volatile long position;

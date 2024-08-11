@@ -13,15 +13,17 @@ void functions::initKeyPad() {
     pinMode(row_2, INPUT);
     pinMode(col_1, OUTPUT);
     pinMode(col_2, OUTPUT);
+    pinMode(encoder_pin, OUTPUT);
     Keyboard.begin();
-    Mouse.begin();
-    screen::init();
+    Serial.println("Connecting...");
+    // screen::init();
 
     // set everything to low
     digitalWrite(col_1, LOW);
     digitalWrite(col_2, LOW);
+    digitalWrite(encoder_pin, LOW);
 
-    screen::display();
+    // screen::display();
 }
 
 /**
@@ -45,11 +47,20 @@ void functions::checkKeyPad(int col) {
 *   findKey() finds the key pressed on the keypad matrix. (position) 
 */
 void functions::findKey() {
+    if(!keyStroke::connected()) {
+      Serial.println("not connected...");
+      delay(1000);
+      return;
+    }
+
     int inputRow_1 = 0; // row reading (first row)
     int lastRowState_1 = 0; // last row reading (first row)
 
     int inputRow_2 = 0; // row reading (secound row)
     int lastRowState_2 = 0; // last row state (secound row)
+
+    int encoderInput = 0;
+    int lastEncoderInput = 0;
 
     inputRow_1 = digitalRead(row_1);
     inputRow_2 = digitalRead(row_2);
@@ -79,9 +90,14 @@ signed char functions::mapEncoder(long val, long min, long max) {
 
 void functions::scroll() {
     long val;   int result, currentDir; 
+    if(!keyStroke::connected()) {
+      Serial.println("not connected...");
+      delay(1000);
+      return; 
+    }
 
     /*   Error handling if the value is a ASCII   */
-    // if(Serial.available())  en.write(0);
+    if(Serial.available())  en.write(0);
 
     /*   Sending direction value of the encoder   */
     val = en.read();

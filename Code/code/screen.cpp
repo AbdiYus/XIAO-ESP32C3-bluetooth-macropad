@@ -1,20 +1,20 @@
 #include "screen.h"
 
 void screen::init() {
-  ssd1306_setFixedFont(ssd1306xled_font6x8);
-  ssd1306_128x64_i2c_init();
-  ssd1306_clearScreen();
+  // ssd1306_setFixedFont(ssd1306xled_font6x8);
+  // ssd1306_128x64_i2c_init();
+  // ssd1306_clearScreen();
 }
 
 void screen::display() {
-  uint8_t buffer[64*16/8];
-  NanoCanvas canvas(64,16, buffer);
-  ssd1306_setFixedFont(ssd1306xled_font6x8);
-  ssd1306_clearScreen();
-  canvas.clear();
+  // uint8_t buffer[64*16/8];
+  // NanoCanvas canvas(64,16, buffer);
+  // ssd1306_setFixedFont(ssd1306xled_font6x8);
+  // ssd1306_clearScreen();
+  // canvas.clear();
 
-  canvas.drawRect(0, 0, 10, 10);
-  canvas.blt(ssd1306_displayWidth()-100, 0);
+  // canvas.drawRect(0, 0, 10, 10);
+  // canvas.blt(ssd1306_displayWidth()-100, 0);
 
   // canvas.fillRect(30, 10, 60, 50, 0xFF);
   // canvas.blt((ssd1306_displayWidth())/2, ssd1306_displayWidth());

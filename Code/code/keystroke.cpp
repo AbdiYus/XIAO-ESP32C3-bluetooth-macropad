@@ -1,5 +1,10 @@
 #include "keystroke.h"
 
+// bleDevice
+bool keyStroke::connected() {
+  return bleDevice.isConnected() ? true : false;  
+}
+
 void keyStroke::copy() {
     Keyboard.press(KEY_LEFT_CTRL);
     Keyboard.press('c');
@@ -16,6 +21,7 @@ void keyStroke::screenShot() {
     Keyboard.press(KEY_LEFT_SHIFT);
     Keyboard.press(KEY_LEFT_GUI);
     Keyboard.press('s');
+    delay(100);
     Keyboard.releaseAll();
 }
 

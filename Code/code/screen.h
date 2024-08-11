@@ -7,9 +7,9 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include "ssd1306.h"
-#include "nano_gfx.h"
-#include "sova.h"
+// #include "ssd1306.h"
+// #include "nano_gfx.h"
+// #include "sova.h"
 
 namespace screen {
   void init();

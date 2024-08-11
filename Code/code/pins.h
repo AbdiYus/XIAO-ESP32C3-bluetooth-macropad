@@ -17,12 +17,14 @@
 /*  Encoder  */
 #define input_a D7
 #define input_b D8
+#define encoder_pin D6 
 
 // /*  Screen  */
 // #define SDA D4 
 // #define SCL D5
 
 // LED pin
+
 // #define led D6
 
 #endif

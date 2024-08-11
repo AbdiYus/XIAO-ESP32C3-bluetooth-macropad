@@ -7,9 +7,10 @@
 #ifndef KEYSTROKE_H
 #define KEYSTROKE_H
 
-#include <Keyboard.h>
+#include <BleKeyboard.h>
 
 namespace keyStroke {
+    bool connected();
     void copy();
     void paste();
     void screenShot();
