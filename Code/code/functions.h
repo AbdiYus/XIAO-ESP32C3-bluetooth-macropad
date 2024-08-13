@@ -18,17 +18,21 @@
 #include "Encoder.h"
 
 /*  Screen  */
-// #include "screen.h"
+#include "screen.h"
 
 extern Encoder en;
 extern volatile long position;
 extern volatile int direction;  
+extern bool updateScreen; 
+
 
 namespace functions {
     void initKeyPad();
     void checkKeyPad(int col);
     void findKey();
     signed char mapEncoder(long val, long min, long max);
+    // void update();
+    // void check();
     void scroll();
 }
 

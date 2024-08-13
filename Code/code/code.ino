@@ -10,7 +10,6 @@
 void setup() {
   functions::initKeyPad();
   Serial.begin(115200);
-  Serial.println("Starting now!");
 }
 
 void loop() {
