@@ -1,10 +1,7 @@
 #include "screen.h"
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
-volatile int lastButtonState = HIGH; 
-volatile int buttonState = HIGH; 
-volatile unsigned long lastDebounceTime = 0; 
-unsigned long debounceDelay = 50; 
+int mode = 1; 
 
 void screen::init() {
   u8g2.begin();
@@ -22,114 +19,67 @@ void screen::show(bool isCon, int pos) {
   u8g2.clearBuffer();
   prepare();
 
-  u8g2.drawStr(65, 53, "alt");
-  u8g2.drawStr(75, 53, "Tab");
-  u8g2.drawStr(70, 20, "SS");
-  u8g2.drawStr(100, 56, "Copy");
-  u8g2.drawStr(100, 21, "Paste");
+  /*  Modes  */
+  drawMode(mode);
+
+  mode == 1 ? u8g2.drawStr(74, 56, "Tab") : u8g2.drawStr(74, 56, "");
+  mode == 1 ? u8g2.drawStr(64, 56, "alt") : u8g2.drawStr(70, 56, "/*/");
+  mode == 1 ? u8g2.drawStr(70, 22, "SS") : u8g2.drawStr(70, 26, "Undo");
+  mode == 1 ? u8g2.drawStr(104, 60, "Copy") : u8g2.drawStr(104, 58, "Term");
+  mode == 1 ? u8g2.drawStr(104, 22, "PT") : u8g2.drawStr(104, 24, "exp");
 
   /*  Squares  */
   switch(pos) {
   case 1:  
-    u8g2.drawRFrame(90, 0, 30, 30, 3); // bottom left
-    u8g2.drawRFrame(90, 30, 30, 30, 3); // bottom right
-    u8g2.drawRFrame(60, 0, 30, 30, 3); // top left
-    u8g2.drawRBox(60, 30, 30, 30, 3);
+    u8g2.drawRFrame(90, 2, 34, 32, 3); // bottom left
+    u8g2.drawRFrame(90, 32, 34, 32, 3); // bottom right
+    u8g2.drawRFrame(56, 2, 34, 32, 3); // top left
+    u8g2.drawRBox(56, 32, 34, 32, 3);
     break;
   case 2: 
-    u8g2.drawRBox(60, 0, 30, 30, 3);
-    u8g2.drawRFrame(90, 30, 30, 30, 3); // bottom right
-    u8g2.drawRFrame(90, 0, 30, 30, 3); // bottom left
-    u8g2.drawRFrame(60, 30, 30, 30, 3); // top right
+    u8g2.drawRBox(56, 2, 34, 32, 3);
+    u8g2.drawRFrame(90, 32, 34, 32, 3); // bottom right
+    u8g2.drawRFrame(90, 2, 34, 32, 3); // bottom left
+    u8g2.drawRFrame(56, 32, 34, 32, 3); // top right
     break;
   case 3: 
-    u8g2.drawRFrame(90, 0, 30, 30, 3); // bottom left
-    u8g2.drawRBox(90, 30, 30, 30, 3); 
-    u8g2.drawRFrame(60, 0, 30, 30, 3); // top left
-    u8g2.drawRFrame(60, 30, 30, 30, 3); // top right
+    u8g2.drawRFrame(90, 2, 34, 32, 3); // bottom left
+    u8g2.drawRBox(90, 32, 34, 32, 3); 
+    u8g2.drawRFrame(56, 2, 34, 32, 3); // top left
+    u8g2.drawRFrame(56, 32, 34, 32, 3); // top right
     break;
   case 4: 
-    u8g2.drawRFrame(90, 30, 30, 30, 3); // bottom right
-    u8g2.drawRFrame(60, 0, 30, 30, 3); // top left
-    u8g2.drawRFrame(60, 30, 30, 30, 3); // top right
-    u8g2.drawRBox(90, 0, 30, 30, 3);
+    u8g2.drawRFrame(90, 32, 34, 32, 3); // bottom right
+    u8g2.drawRFrame(56, 2, 34, 32, 3); // top left
+    u8g2.drawRFrame(56, 32, 34, 32, 3); // top right
+    u8g2.drawRBox(90, 2, 34, 32, 3);
     break;
   default: 
-    u8g2.drawRFrame(90, 0, 30, 30, 3); // bottom left
-    u8g2.drawRFrame(90, 30, 30, 30, 3); // bottom right
-    u8g2.drawRFrame(60, 0, 30, 30, 3); // top left
-    u8g2.drawRFrame(60, 30, 30, 30, 3); // top right
+    u8g2.drawRFrame(90, 2, 34, 32, 3); // bottom left
+    u8g2.drawRFrame(90, 32, 34, 32, 3); // bottom right
+    u8g2.drawRFrame(56, 2, 34, 32, 3); // top left
+    u8g2.drawRFrame(56, 32, 34, 32, 3); // top right
     break;
   }
 
-  /*  Modes  */
-  u8g2.drawStr(30, 50,"Mode: 1");
-
-  /*  Key names  */
-  // switch(pos) {
-  //   case 1:
-  //     u8g2.drawStr(70, 20, "SS");
-  //     u8g2.drawStr(100, 56, "Copy");
-  //     u8g2.drawStr(100, 21, "Paste");
-  //   break;
-  //   case 2:
-  //     u8g2.drawStr(65, 53, "alt");
-  //     u8g2.drawStr(75, 53, "Tab");
-  //     u8g2.drawStr(100, 56, "Copy");
-  //     u8g2.drawStr(100, 21, "Paste");
-  //   break;
-  //   case 3:
-  //     u8g2.drawStr(65, 53, "alt");
-  //     u8g2.drawStr(75, 53, "Tab");
-  //     u8g2.drawStr(70, 20, "SS"); 
-  //     u8g2.drawStr(100, 21, "Paste");
-  //   break;
-  //   case 4:
-  //     u8g2.drawStr(65, 53, "alt");
-  //     u8g2.drawStr(75, 53, "Tab");
-  //     u8g2.drawStr(70, 20, "SS");
-  //     u8g2.drawStr(100, 56, "Copy"); 
-  //   break; 
-  //   default:
-      // u8g2.drawStr(65, 53, "alt");
-      // u8g2.drawStr(75, 53, "Tab");
-      // u8g2.drawStr(70, 20, "SS");
-      // u8g2.drawStr(100, 56, "Copy");
-      // u8g2.drawStr(100, 21, "Paste");
-  //   break;
-  // }
-
   /*  Header  */
+  u8g2.drawStr(7, 60, "C3_pad");
   u8g2.setFont(u8g2_font_unifont_t_symbols);
-  isCon == true ? u8g2.drawUTF8(5, 60, "☑") : u8g2.drawUTF8(5, 60, "☐");
+  isCon == true ? u8g2.drawUTF8(5, 20, "☑") : u8g2.drawUTF8(5, 20, "☐");
 
   u8g2.sendBuffer();
 }
 
-
+void screen::drawMode(int mode) {
+  char text[20]; 
+  sprintf(text, "Mode: %d", mode); 
+  u8g2.drawStr(30, 50, text);
+}
 
 void screen::changeMode() {
-  int reading = digitalRead(encoder_pin); 
-  // int lastRead = 0; 
-
-  // if(reading != lastRead) {
-  //   if(reading == LOW)  Serial.println("Hello");
-  //   lastRead = reading; 
-  //   while(reading == lastRead)  reading = digitalRead(encoder_pin);
-  // }
-
-  // if(reading != lastButtonState) {
-  //   lastDebounceTime = millis();
-  // }
-
-  // if((millis() - lastDebounceTime) > debounceDelay) {
-  //   if(reading != buttonState) {
-  //     buttonState = reading; 
-  //     if(buttonState == LOW)  Serial.println("Hello");
-  //   }
-  // }
-
-  // lastButtonState = reading;
+  if(mode <= 1)  mode++; 
+  else mode--; 
+  show(true);  
 }
 
 void screen::update() {

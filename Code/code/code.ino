@@ -13,7 +13,9 @@ void setup() {
 }
 
 void loop() {
-  if(digitalRead(col_2) == LOW)   functions::checkKeyPad(col_1);
-  if(digitalRead(col_1) == LOW)   functions::checkKeyPad(col_2);
+  // if(digitalRead(col_2) == LOW)   functions::checkKeyPad(col_1);
+  // if(digitalRead(col_1) == LOW)   functions::checkKeyPad(col_2);
+  functions::checkKeyPad(col_1);
+  functions::checkKeyPad(col_2);
   functions::scroll();
 }

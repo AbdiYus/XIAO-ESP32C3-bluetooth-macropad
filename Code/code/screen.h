@@ -18,17 +18,14 @@
 #endif
 
 extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2;
-extern volatile int lastButtonState; 
-extern volatile int buttonState; 
-extern volatile unsigned long lastDebounceTime; 
-extern unsigned long debounceDelay; 
+extern int mode;
+
 
 namespace screen {
   void init();
-  void changeMode(); 
+  void drawMode(int mode); 
+  void changeMode();
   void update();
-
-  /* Graphics */
   void show(bool isCon, int pos = 0);
   void prepare();
 }

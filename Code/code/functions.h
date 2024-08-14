@@ -23,16 +23,14 @@
 extern Encoder en;
 extern volatile long position;
 extern volatile int direction;  
-extern bool updateScreen; 
-
+extern bool wasCon; 
+extern int timeNow;
 
 namespace functions {
     void initKeyPad();
     void checkKeyPad(int col);
     void findKey();
     signed char mapEncoder(long val, long min, long max);
-    // void update();
-    // void check();
     void scroll();
 }
 

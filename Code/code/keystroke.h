@@ -15,5 +15,11 @@ namespace keyStroke {
     void paste();
     void screenShot();
     void altTab();
+
+    /*   VS code   */
+    void terminal();
+    void comment();
+    void undo(); 
+    void explorer(); 
 }
 #endif
