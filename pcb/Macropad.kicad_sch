@@ -1643,22 +1643,10 @@
 		(uuid "20def3f1-d365-4e1f-8db3-9051e096643e")
 	)
 	(junction
-		(at 189.23 80.01)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "46c4a995-84d4-4d14-8654-47dfcec60c07")
-	)
-	(junction
 		(at 162.56 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6436420a-d857-4d3f-b64c-2fb56a6e58a6")
-	)
-	(junction
-		(at 189.23 68.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6e6631cc-7de4-4330-9144-fa89db402a69")
 	)
 	(junction
 		(at 209.55 97.79)
@@ -1696,33 +1684,13 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 78.74) (xy 189.23 80.01)
+			(xy 189.23 78.74) (xy 189.23 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "0436b01c-ad7c-4e33-87f8-9b6e98ab8d80")
-	)
-	(wire
-		(pts
-			(xy 189.23 71.12) (xy 189.23 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08256b7f-8c5b-412a-92d6-900577deb3e7")
-	)
-	(wire
-		(pts
-			(xy 179.07 80.01) (xy 181.61 80.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0d2aca17-a954-4870-aa77-32bae3e62acc")
 	)
 	(wire
 		(pts
@@ -1813,16 +1781,6 @@
 			(type default)
 		)
 		(uuid "37747d19-866c-4a46-8aaa-2647ff99dabf")
-	)
-	(wire
-		(pts
-			(xy 190.5 71.12) (xy 189.23 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "42ce7eae-3668-40e5-821a-89fd8f22c911")
 	)
 	(wire
 		(pts
@@ -2013,16 +1971,6 @@
 			(type default)
 		)
 		(uuid "cc8b55da-8253-462c-81b4-7b5d56b16582")
-	)
-	(wire
-		(pts
-			(xy 189.23 80.01) (xy 189.23 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0da45ba-be42-45be-a063-dba6e7f8a800")
 	)
 	(wire
 		(pts
@@ -2366,73 +2314,6 @@
 			(justify right bottom)
 		)
 		(uuid "e5d27b36-f402-49d2-b2e9-a489383ac1c1")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 182.88 71.12 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "024c2250-9642-47e8-8cf8-9e8d2f94862a")
-		(property "Reference" "#PWR02"
-			(at 176.53 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 179.07 71.1199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 182.88 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 182.88 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 182.88 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "23dae1d4-d284-4889-8081-7f233435a908")
-		)
-		(instances
-			(project ""
-				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -3181,73 +3062,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 179.07 80.01 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "752d8b50-b5d4-46b9-9a57-6ac335a43d3c")
-		(property "Reference" "#PWR04"
-			(at 172.72 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 175.26 80.0099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 179.07 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 179.07 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 179.07 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c31b94af-06e2-45ba-93a3-aded5ceb4a34")
-		)
-		(instances
-			(project "Macropad"
-				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
-					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 195.58 100.33 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3376,74 +3190,6 @@
 			(project ""
 				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
 					(reference "SW5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 186.69 71.12 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "85bafd95-2fb8-4d90-917b-6d465c39f3d2")
-		(property "Reference" "R4"
-			(at 186.69 64.77 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "500"
-			(at 186.69 67.31 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 186.69 72.898 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 186.69 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 186.69 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b69b4a6-18c9-43c2-a6e9-53737e7e147c")
-		)
-		(pin "2"
-			(uuid "81acc8bc-e6fe-4b83-befe-9565ee2ac87b")
-		)
-		(instances
-			(project "Macropad"
-				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
-					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -4135,73 +3881,6 @@
 			(project "Macropad"
 				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
 					(reference "D3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 185.42 80.01 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fe18b50b-c336-4749-813f-db54c40ff1ce")
-		(property "Reference" "R5"
-			(at 185.42 82.296 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "500"
-			(at 185.42 83.82 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 185.42 81.788 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 185.42 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "29fb02aa-9be7-45f9-b1a9-25c32a1f595d")
-		)
-		(pin "2"
-			(uuid "8b5460a5-9153-4b31-a421-19a6b273c81f")
-		)
-		(instances
-			(project "Macropad"
-				(path "/99642f14-29a2-4423-b587-420b0420d9e3"
-					(reference "R5")
 					(unit 1)
 				)
 			)
