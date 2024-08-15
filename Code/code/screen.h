@@ -25,7 +25,6 @@ namespace screen {
   void init();
   void drawMode(int mode); 
   void changeMode();
-  void update();
   void show(bool isCon, int pos = 0);
   void prepare();
 }

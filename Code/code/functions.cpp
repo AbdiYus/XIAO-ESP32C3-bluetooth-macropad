@@ -6,6 +6,7 @@ volatile int direction = 1;
 bool wasCon = false;
 int timeNow = 50; 
 
+
 /**
 *   initKeypad() sets the pins for the keypad matrix, and
 *   the library Keyboard.
@@ -42,7 +43,10 @@ void functions::checkKeyPad(int col) {
 
   digitalWrite(col, HIGH);
   functions::findKey();
-  digitalWrite(col, LOW);
+  if(millis() - timeNow >= 50) {
+    timeNow = millis(); 
+    digitalWrite(col, LOW);
+  }
 }
 
 /**
@@ -51,51 +55,51 @@ void functions::checkKeyPad(int col) {
 void functions::findKey() {
   int inputRow_1 = 0; // row reading (first row)
   int lastRowState_1 = 0; // last row reading (first row)
-
   int inputRow_2 = 0; // row reading (secound row)
   int lastRowState_2 = 0; // last row state (secound row)
 
-  if(millis() - timeNow >= 50) {
-    timeNow = millis(); 
+  inputRow_1 = digitalRead(row_1);
+  inputRow_2 = digitalRead(row_2);
 
-    inputRow_1 = digitalRead(row_1);
-    inputRow_2 = digitalRead(row_2);
-
-    if((inputRow_1) && (inputRow_2)) {
-      screen::changeMode();
-      return;
+  if((inputRow_1) && (inputRow_2)) {
+    screen::changeMode();
+    while((inputRow_1) && (inputRow_2)) {
+      inputRow_1 = digitalRead(row_1);
+      inputRow_2 = digitalRead(row_2);
     }
-
-    if(inputRow_1) {
-      if(digitalRead(col_1) == HIGH) {
-        screen::show(true, 3);
-        mode == 1 ? keyStroke::copy() : keyStroke::terminal();
-      }
-      if(digitalRead(col_2) == HIGH) {
-        screen::show(true, 4);
-        mode == 1 ? keyStroke::paste() : keyStroke::explorer();
-      }
-
-      lastRowState_1 = inputRow_1;
-      while(inputRow_1 == lastRowState_1) inputRow_1 = digitalRead(row_1);
-      screen::show(true);
-    }
-
-    if(inputRow_2) {
-      if(digitalRead(col_1) == HIGH) {
-        screen::show(true, 2);
-        mode == 1 ? keyStroke::screenShot() : keyStroke::undo();
-      }
-      if(digitalRead(col_2) == HIGH) {
-        screen::show(true, 1);
-        mode == 1 ? keyStroke::altTab() : keyStroke::comment();
-      }
-
-      lastRowState_2 = inputRow_2;
-      while(inputRow_2 == lastRowState_2) inputRow_2 = digitalRead(row_2);
-      screen::show(true);
-    }
+    return;
   }
+
+  if(inputRow_1) {
+    if(digitalRead(col_1) == HIGH) {
+      screen::show(true, 3);
+      mode == 1 ? keyStroke::copy() : keyStroke::terminal();
+    }
+    if(digitalRead(col_2) == HIGH) {
+      screen::show(true, 4);
+      mode == 1 ? keyStroke::paste() : keyStroke::explorer();
+    }
+
+    lastRowState_1 = inputRow_1;
+    while(inputRow_1 == lastRowState_1) inputRow_1 = digitalRead(row_1);
+    screen::show(true);
+  }
+
+  if(inputRow_2) {
+    if(digitalRead(col_1) == HIGH) {
+      screen::show(true, 2);
+      mode == 1 ? keyStroke::screenShot() : keyStroke::undo();
+    }
+    if(digitalRead(col_2) == HIGH) {
+      screen::show(true, 1);
+      mode == 1 ? keyStroke::altTab() : keyStroke::comment();
+    }
+
+    lastRowState_2 = inputRow_2;
+    while(inputRow_2 == lastRowState_2) inputRow_2 = digitalRead(row_2);
+    screen::show(true);
+  }
+  
 }
 
 signed char functions::mapEncoder(long val, long min, long max) {

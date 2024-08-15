@@ -21,7 +21,6 @@ void screen::show(bool isCon, int pos) {
 
   /*  Modes  */
   drawMode(mode);
-
   mode == 1 ? u8g2.drawStr(74, 56, "Tab") : u8g2.drawStr(74, 56, "");
   mode == 1 ? u8g2.drawStr(64, 56, "alt") : u8g2.drawStr(70, 56, "/*/");
   mode == 1 ? u8g2.drawStr(70, 22, "SS") : u8g2.drawStr(70, 26, "Undo");
@@ -80,8 +79,4 @@ void screen::changeMode() {
   if(mode <= 1)  mode++; 
   else mode--; 
   show(true);  
-}
-
-void screen::update() {
-
 }
