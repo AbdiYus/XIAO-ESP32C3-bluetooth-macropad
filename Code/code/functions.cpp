@@ -4,6 +4,7 @@ Encoder en(input_a, input_b); /*   Rotary encoder    */
 volatile long position = -999;
 volatile int direction = 1;
 bool wasCon = false;
+bool isAnythingPressed = false; 
 int timeNow = 50; 
 
 
@@ -33,7 +34,7 @@ void functions::initKeyPad() {
 *
 *   @param int col - the column to check
 */
-void functions::checkKeyPad(int col) {
+void functions::checkKeyPad(int col) { /* TODO ADD BOOL AND SLEEP FUNCTION!!!!!*/
   /*  connection update  */
   if(!keyStroke::connected() || (keyStroke::connected() && wasCon)) {
     wasCon = keyStroke::connected() ? false : true;
@@ -43,7 +44,7 @@ void functions::checkKeyPad(int col) {
 
   digitalWrite(col, HIGH);
   functions::findKey();
-  if(millis() - timeNow >= 50) {
+  if(millis() - timeNow >= 100) {
     timeNow = millis(); 
     digitalWrite(col, LOW);
   }
@@ -72,12 +73,12 @@ void functions::findKey() {
 
   if(inputRow_1) {
     if(digitalRead(col_1) == HIGH) {
-      screen::show(true, 3);
-      mode == 1 ? keyStroke::copy() : keyStroke::terminal();
+      screen::show(true, 4);  isAnythingPressed = true;
+      mode == 1 ? keyStroke::paste() : keyStroke::explorer();
     }
     if(digitalRead(col_2) == HIGH) {
-      screen::show(true, 4);
-      mode == 1 ? keyStroke::paste() : keyStroke::explorer();
+      screen::show(true, 3);  isAnythingPressed = true;
+      mode == 1 ? keyStroke::copy() : keyStroke::terminal();
     }
 
     lastRowState_1 = inputRow_1;
@@ -87,11 +88,11 @@ void functions::findKey() {
 
   if(inputRow_2) {
     if(digitalRead(col_1) == HIGH) {
-      screen::show(true, 2);
+      screen::show(true, 2);  isAnythingPressed = true;
       mode == 1 ? keyStroke::screenShot() : keyStroke::undo();
     }
     if(digitalRead(col_2) == HIGH) {
-      screen::show(true, 1);
+      screen::show(true, 1);  isAnythingPressed = true;
       mode == 1 ? keyStroke::altTab() : keyStroke::comment();
     }
 
@@ -99,7 +100,6 @@ void functions::findKey() {
     while(inputRow_2 == lastRowState_2) inputRow_2 = digitalRead(row_2);
     screen::show(true);
   }
-  
 }
 
 signed char functions::mapEncoder(long val, long min, long max) {
@@ -119,6 +119,7 @@ void functions::scroll() {
   if(val != position) {
     currentDir = (val - position) > 0 ? 1 : -1;
     if(currentDir != direction) {
+      isAnythingPressed = true;
       if(currentDir == 1) en.write(11); // offset number for encoder
       else en.write(-3);
     }

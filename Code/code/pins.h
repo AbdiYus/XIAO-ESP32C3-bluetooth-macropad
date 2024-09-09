@@ -19,10 +19,7 @@
 #define input_b D8
 #define encoder_pin D6 
 
-/*  Screen  */
-
-// LED pin
-
-// #define led D6
+/*  Sleep mode  */
+#define sleep_timeout 300000
 
 #endif

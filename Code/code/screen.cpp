@@ -80,3 +80,9 @@ void screen::changeMode() {
   else mode--; 
   show(true);  
 }
+
+void screen::clear() {
+  u8g2.clearBuffer();
+  prepare();
+  u8g2.sendBuffer();
+}

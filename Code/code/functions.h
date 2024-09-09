@@ -24,6 +24,7 @@ extern Encoder en;
 extern volatile long position;
 extern volatile int direction;  
 extern bool wasCon; 
+extern bool isAnythingPressed; 
 extern int timeNow;
 
 namespace functions {

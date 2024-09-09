@@ -27,6 +27,7 @@ namespace screen {
   void changeMode();
   void show(bool isCon, int pos = 0);
   void prepare();
+  void clear();
 }
 
 #endif 
