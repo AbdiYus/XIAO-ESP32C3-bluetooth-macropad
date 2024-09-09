@@ -10,13 +10,8 @@ This projects includes:
 ## Arduino sketch 
 The project requires these libraries to compile: 
 - [Encoder by Paul Stoffregen](https://github.com/PaulStoffregen/Encoder)
-- [ssd1306 by Alexey Dynda](https://github.com/lexus2k/ssd1306)
-- [ESP32-BLE-Keyboard by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
-- [ESP32-BLE-Mouse by T-vK](https://github.com/T-vK/ESP32-BLE-Keyboard)
-
-After downloading these libraies, then you can easly change/add keystrokes in the file __keystroke.h/cpp__. You can also add more columns/inputs in the file __code.ino__. 
-
-__N.B! currently work in progress!!__ 
+- [u8g2 by olikarus](https://github.com/olikraus/u8g2)
+- [ESP32-BLE-Combo by Georgegipa](https://github.com/Georgegipa/ESP32-BLE-Combo)
 
 ## PCB design
 I'm new to PCB design and __highly recommend__ you to check it out before using the design. 
